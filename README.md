@@ -1,8 +1,8 @@
 # Metamorphosis: a HairDeck demo
 
-[![Silent preview of Metamorphosis at 7 times speed. Select it to open the full film.](docs/preview.gif)](https://az9713.github.io/claude-duet-hairdeck-demo/)
+[![Silent preview of Metamorphosis at 7 times speed. Select it to open the full film.](docs/preview.gif)](https://az9713.github.io/claude-duet-coding-demo/)
 
-**[Play the full film with music (90 s)](https://az9713.github.io/claude-duet-hairdeck-demo/)**
+**[Play the full film with music (90 s)](https://az9713.github.io/claude-duet-coding-demo/)**
 
 The image above is a silent 13 s preview at 7 times speed. Select it to open the player page, because a GitHub README cannot run a video player from a Pages site.
 
@@ -16,7 +16,7 @@ The film is the second test of [HairDeck](https://github.com/hyz317/HairDeck), w
 
 This project started in **Claude Duet, in Voice mode**, while the developer was taking a walk in the park. After the first HairDeck demo, [Regrowth](https://github.com/az9713/hairdeck-demo), the developer asked Claude Duet to come up with a second, creative HairDeck demo. Claude Duet proposed the latent-morph technique and the "one life told by hair alone" story, and sent the brief to Claude Code by voice. Claude Code built the film, with two review checkpoints for the developer: the style images and a 10-second morph test.
 
-**[Making of Metamorphosis](https://az9713.github.io/claude-duet-hairdeck-demo/making-of.html)** tells how Claude Duet and Claude Code worked together: the voice brief word for word, who did what, the timeline, the build, the problems and fixes, and the cost.
+**[Making of Metamorphosis](https://az9713.github.io/claude-duet-coding-demo/making-of.html)** tells how Claude Duet and Claude Code worked together: the voice brief word for word, who did what, the timeline, the build, the problems and fixes, and the cost.
 
 ## Timeline
 
