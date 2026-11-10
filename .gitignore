@@ -1,0 +1,22 @@
+# Local only: resume notes, third-party clone, model checkpoint, large output
+HANDOFF.md
+HairDeck/
+hd_ws/
+out/
+__pycache__/
+blender/t_avatars.py
+blender/t_probe.py
+tools/vae_check.py
+
+# Download archives, saved web pages, and import copies of the avatars
+assets/avatar_src/*.zip
+assets/avatar_src/*.html
+assets/avatar_src/**/*_copy.glb
+assets/avatar_src/avatarsample_g/
+
+# Reference images that the film does not use
+assets/styles/s1_a.png
+assets/styles/s3_b.png
+
+# Local tool cache (holds local paths)
+.impeccable/

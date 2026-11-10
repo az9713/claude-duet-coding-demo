@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Metamorphosis</title>
+<meta name="description" content="A 90-second animated short film: one life told by hair alone, made with HairDeck hair cards and latent morphs.">
+<style>
+  :root { --bg: #0f172a; --text: #e2e8f0; --body: #cbd5e1; --muted: #94a3b8; --accent: #2dd4bf; --border: #334155; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--body); font: 17px/1.6 Georgia, "Times New Roman", serif; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { margin: 0 0 16px; color: var(--text); font-size: 2.2rem; font-weight: 400; }
+  video { display: block; width: 100%; height: auto; background: #000; border: 1px solid var(--border); }
+  p { max-width: 68ch; margin: 20px 0 0; }
+  .small { color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Metamorphosis</h1>
+  <video controls playsinline preload="metadata" poster="poster.jpg" width="1920" height="1080" aria-label="Metamorphosis, an animated short film with music and no dialogue">
+    <source src="metamorphosis.mp4" type="video/mp4">
+    <a href="metamorphosis.mp4">Download the film (MP4, 30 MB)</a>
+  </video>
+  <p>One life told by hair alone, in one shot at a window: pigtails, a ponytail, a wedding updo, a tired bob, long silver hair, and a grandchild in the same pigtails. Her face does not age; the hair, the light, and the view carry the time. The film has music and no dialogue, and it runs for 90 seconds.</p>
+  <p>All hair in the film comes from <a href="https://github.com/hyz317/HairDeck">HairDeck</a>. Each style changes into the next in the latent space of HairDeck's card VAE.</p>
+  <p class="small"><a href="https://github.com/az9713/hairdeck-metamorphosis-demo">Source and notes on GitHub</a>. Backdrops, reference images, and music were generated with AI. Companion film: <a href="https://az9713.github.io/hairdeck-demo/">Regrowth</a>.</p>
+</main>
+</body>
+</html>
