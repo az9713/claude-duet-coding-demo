@@ -12,6 +12,12 @@ Metamorphosis is an animated short film with music and no dialogue: one woman's 
 
 The film is the second test of [HairDeck](https://github.com/hyz317/HairDeck), which makes animation-ready hair cards from a single image. The first was [Regrowth](https://github.com/az9713/hairdeck-demo), which cut and removed the cards. Metamorphosis changes each hairstyle into the next **in the latent space of HairDeck's card VAE**.
 
+## How this project started
+
+This project started in **Claude Duet, in Voice mode**, while the developer was taking a walk in the park. After the first HairDeck demo, [Regrowth](https://github.com/az9713/hairdeck-demo), the developer asked Claude Duet to come up with a second, creative HairDeck demo. Claude Duet proposed the latent-morph technique and the "one life told by hair alone" story, and sent the brief to Claude Code by voice. Claude Code built the film, with two review checkpoints for the developer: the style images and a 10-second morph test.
+
+**[Making of Metamorphosis](https://az9713.github.io/hairdeck-metamorphosis-demo/making-of.html)** tells how Claude Duet and Claude Code worked together: the voice brief word for word, who did what, the timeline, the build, the problems and fixes, and the cost.
+
 ## Timeline
 
 | Time | Hair | Action | Window |
@@ -61,7 +67,7 @@ HairDeck puts almost all card roots in a small area at the crown (for the bob, t
 
 ## What is in this repo
 
-- `docs/`: the player page and the film, served by GitHub Pages.
+- `docs/`: the player page, the film, and the making-of page, served by GitHub Pages.
 - `blender/film.py`: the whole film (performance, spring simulation, morph playback, hands, grandchild, backdrops, render loop).
 - `blender/scene.py`, `rig.py`: the avatar scene and the hair placement. `blender/t_fit.py` and `blender/t_chest.py` measure the head fit and the chest profile that `rig.py` uses.
 - `blender/morph_render.py`: the 10-second morph test and the views of the picked styles.

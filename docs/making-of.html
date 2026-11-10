@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Making of Metamorphosis</title>
+<meta name="description" content="How Claude Duet and Claude Code made the HairDeck demo film Metamorphosis: from a voice brief on a walk to a published film.">
+<style>
+  :root { --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --body: #cbd5e1; --muted: #94a3b8; --accent: #2dd4bf; --warm: #fb923c; --border: #334155; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--body); font: 17px/1.6 Georgia, "Times New Roman", serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 56px; }
+  h1 { margin: 0 0 8px; color: var(--text); font-size: 2.2rem; font-weight: 400; }
+  h2 { margin: 40px 0 8px; color: var(--text); font-size: 1.4rem; font-weight: 400; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { margin: 24px 0 4px; color: var(--warm); font-size: 1.05rem; font-weight: 400; }
+  p, li { max-width: 72ch; }
+  a { color: var(--accent); }
+  code { font: .88em/1.4 Consolas, "Courier New", monospace; color: var(--text); background: var(--card); padding: 1px 5px; border-radius: 4px; }
+  .lead { color: var(--muted); margin: 0 0 24px; }
+  blockquote { margin: 16px 0; padding: 14px 18px; background: var(--card); border-left: 3px solid var(--warm); border-radius: 0 6px 6px 0; }
+  blockquote p { margin: 0 0 10px; }
+  blockquote p:last-child { margin: 0; }
+  .who { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 16px 0; }
+  .who div { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; }
+  .who b { color: var(--text); font-weight: 400; display: block; margin-bottom: 4px; }
+  .scroll { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text); font-weight: 400; background: var(--card); }
+  td:first-child { white-space: nowrap; color: var(--muted); }
+  .small { color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Making of Metamorphosis</h1>
+  <p class="lead">How Claude Duet and Claude Code worked together on a HairDeck demo film, from a voice brief on a walk to a published film. <a href="./">Watch the film</a> · <a href="https://github.com/az9713/hairdeck-metamorphosis-demo">Source on GitHub</a></p>
+
+  <h2>1. It started on a walk</h2>
+  <p>The project started in <b>Claude Duet, in Voice mode</b>, while the developer was taking a walk in the park. The first HairDeck demo, <a href="https://github.com/az9713/hairdeck-demo">Regrowth</a>, was finished and published earlier that day. The developer asked Claude Duet to come up with a second, creative HairDeck demo.</p>
+  <p>Claude Duet proposed the idea, the technique, and the story, and sent them to Claude Code as a brief. The brief arrived in the Claude Code session at 18:21 UTC on 2026-11-09, while Claude Code was still working on Regrowth. This is the brief, word for word:</p>
+  <blockquote>
+    <p>New project: a second HairDeck demo film, "Metamorphosis", in a new folder next to regrowth in hair_stefan. Same toolkit as Regrowth: fal.ai for images and music, Blender with EEVEE, about 90 s at 1920x1080, music and no dialogue.</p>
+    <p>The technique, which is new compared with Regrowth: install HairDeck locally and morph the hair in the card-VAE latent space instead of trimming geometry. For each pair of adjacent styles, encode both card sets, pair the cards by latent distance (Hungarian matching), blend the latents over time and decode every frame, so cards visibly drift, split and merge. When the card counts differ, spawn cards from the root or dissolve them. Blend the per-card colors from HairDeck's new color model too. Keep the spring chains so the hair stays alive during the morphs.</p>
+    <p>Story, "one life told by hair alone", in one unbroken shot at a window or mirror: 1. A small girl in two pigtails; an off-screen hand ties the ribbons. 2. The pigtails morph into a teenage ponytail, swinging. 3. It rises into a wedding updo. 4. It collapses into a short practical bob (new mother, tired, hair pushed aside). 5. Slowly over decades the color drains to silver and it grows long and loose. 6. Final beat: a grandchild's small hands braid the silver hair, and the camera finds the child wearing the same two pigtails from shot 1. The loop closes.</p>
+    <p>The face does not age, so let hair, color, backdrop (the window through decades, painted with fal) and light carry time, and say so in the README as a deliberate choice.</p>
+    <p>Before you start: use an avatar with a licence that allows redistribution (Regrowth's is still open), check fal prices before each job and keep the fal spend under $5, and show me the style reference images and a 10-second test of one morph before the full render. Keep a HANDOFF.md and Known limits as in Regrowth.</p>
+  </blockquote>
+  <p>About 70 seconds later, at 18:22 UTC, a second voice message changed the brief:</p>
+  <blockquote>
+    <p>Update to the Metamorphosis brief: drop the $5 fal cap. Use whatever fal models and spend the film needs, though the account likely has only a few dollars left, so stop and tell me if a job is refused for billing. Blender stays the main tool, and JavaScript animation libraries are fine too, for example an interactive player page on GitHub Pages that shows the latent morph. The goal is a fun, creative film that showcases what the HairDeck code base can do. Keep the style-reference and 10-second test checkpoints.</p>
+  </blockquote>
+  <p class="small">The session transcript stores both messages as queued messages, which arrived while Claude Code was busy. It does not keep the voice audio or the Duet conversation itself, so this page quotes only what reached Claude Code.</p>
+
+  <h2>2. Who did what</h2>
+  <div class="who">
+    <div><b>Claude Duet (voice)</b>Came up with the film: the latent-morph technique, the six-beat story, the unchanged face, the window through the decades, the budget rule, and the two review checkpoints.</div>
+    <div><b>Claude Code (terminal)</b>Built everything: the local HairDeck setup, avatars, style images, the morph tool, the Blender film, backdrops, music, render, edit, README, and the published repository.</div>
+    <div><b>The developer</b>Started it on the walk, approved the style images and the 10-second morph test, put a Hugging Face token in a local <code>.env</code> file, and chose the repository name and what to publish.</div>
+  </div>
+  <p>Claude Code kept a resume file, <code>HANDOFF.md</code>, through the whole build. The session context was cleared once (at 19:40 UTC), and Claude Code continued from that file with no loss of state.</p>
+
+  <h2>3. Timeline</h2>
+  <p class="small">All times are UTC. The dates are 2026-11-09 and 2026-11-10.</p>
+  <div class="scroll"><table>
+    <tr><th>Time</th><th>Who</th><th>What happened</th></tr>
+    <tr><td>18:21</td><td>Duet</td><td>The brief arrives by voice.</td></tr>
+    <tr><td>18:22</td><td>Duet</td><td>The brief update arrives: no $5 cap, stop on a billing refusal, a Pages player is welcome.</td></tr>
+    <tr><td>18:22-19:27</td><td>Claude Code</td><td>Finds CC0 avatars, installs the HairDeck card VAE locally and tests it, makes 8 style images with fal, runs the first 3 styles through the HairDeck Space. The Space then refuses every request (no Hugging Face login).</td></tr>
+    <tr><td>19:28</td><td>Developer</td><td>Approves the style images and picks the updo with tendrils.</td></tr>
+    <tr><td>19:30</td><td>Developer</td><td>Puts the Hugging Face token in a local <code>.env</code> file, so the token never appears in the chat. The last 3 styles then generate in 6.6-9.8 s each.</td></tr>
+    <tr><td>19:41</td><td>Claude Code</td><td>Resumes from <code>HANDOFF.md</code> after a context clear. Checks the six picked styles on the avatar in Blender, builds <code>tools/morph.py</code>, and renders the 10-second test (pigtails to ponytail).</td></tr>
+    <tr><td>22:15</td><td>Developer</td><td>Asks "but where is the story?". Claude Code explains that the test shows only the technique, as the brief asked, and maps out the six story beats.</td></tr>
+    <tr><td>22:17</td><td>Developer</td><td>"morph looks good. build the final version."</td></tr>
+    <tr><td>22:18-00:05</td><td>Claude Code</td><td>Backdrops and music with fal, five morphs, the film script, test stills and fixes, the full 2,700-frame render, the edit.</td></tr>
+    <tr><td>00:21</td><td>Developer</td><td>Names the repository and chooses what to publish: scrub personal data, keep the resume file local, follow the Regrowth layout.</td></tr>
+    <tr><td>00:25</td><td>Claude Code</td><td>Commits, creates the public repository with the GitHub CLI, pushes, and turns on GitHub Pages.</td></tr>
+  </table></div>
+
+  <h2>4. How Claude Code built it</h2>
+
+  <h3>Avatars and a local HairDeck</h3>
+  <p>The Regrowth avatar does not allow redistribution, so Claude Code took four <a href="https://opengameart.org/content/vroid-studio-cc0-models">VRoid CC0 models</a> from OpenGameArt and read their VRM metadata: redistribution, modification, and commercial use are allowed. Base_Female became the woman, AvatarSample_E the grandchild, and later the right arm of AvatarSample_F became the off-screen hand.</p>
+  <p>Only HairDeck's card VAE (31 MB) was installed locally, on a laptop RTX 3050 with 4 GB. A round trip through the VAE moved card points by a mean of 0.2% (long hair, 104 cards) and 0.5% (curly hair, 76 cards) of card length. Decoding 76 cards took 22 ms. That result made the latent morph practical.</p>
+
+  <h3>Six styles with the same face</h3>
+  <p>One image of a girl with pigtails came from <code>fal-ai/nano-banana</code>. The other styles are <code>nano-banana/edit</code> edits of that image, so the face stays the same. The HairDeck Space turned each image into hair cards and spring chains, 4 seeds per style. Claude Code drew every seed as a contact sheet and picked one per style: 76, 72, 68, 81, 59, and 100 cards.</p>
+
+  <h3>The latent morph</h3>
+  <p><code>tools/morph.py</code> encodes every card, pairs the cards of two styles with the Hungarian method, and blends the latents frame by frame. The cost of a pair is the latent distance plus the root distance, each divided by its median. Extra "dissolve" and "spawn" entries let cards shrink into their roots or grow out of them when the card counts differ. Every decoded card is resampled to 48 points, so one mesh with a fixed topology holds the whole morph. Colours blend in CIE Lab. 180 frames decode in 15 s.</p>
+  <p>One finding: HairDeck puts almost all card roots in a small area at the crown (for the bob, the roots span only ±0.003 in x). So the card shape, not the root position, carries most of the style.</p>
+
+  <h3>The 10-second test</h3>
+  <p>Before the full film, the brief asked for one morph to review. Claude Code rendered pigtails to ponytail on Base_Female: 2 s hold, 6 s morph, 2 s hold, with a slow camera move, at 1.09 s per frame. The first framing cut off the top of her head; Claude Code stopped that render, fixed the camera, checked two stills, and rendered again. The developer approved the look.</p>
+
+  <h3>The film</h3>
+  <ul>
+    <li><b>Backdrops:</b> one painted window, then 5 edits of it for summer, the wedding day, a rainy autumn evening, winter decades later, and spring with the old tree in bloom.</li>
+    <li><b>Music:</b> one instrumental track of 176.5 s from <code>fal-ai/minimax-music/v2.6</code>, cut to 90 s from its opening and its quiet ending, chosen by measured loudness.</li>
+    <li><b>Springs:</b> HairDeck's spring chains, simulated at 90 Hz with sphere colliders. During a morph, the chains of both styles run, and their deformations blend with the same weight as the latents.</li>
+    <li><b>Hands:</b> Blender IK. An arm from off-screen ties the ribbon; her own hand pushes the bob back; the grandchild's hands work at the silver lock.</li>
+    <li><b>The grandchild:</b> the first style's pigtails, scaled by 0.913 to the child's skullcap, so the last shot repeats the first.</li>
+    <li><b>Render:</b> 2,700 frames at 1920x1080 in EEVEE, about 1.03 s per frame, in three batches so that a stop could resume.</li>
+  </ul>
+
+  <h2>5. Problems found and fixed</h2>
+  <div class="scroll"><table>
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td>Space refused every request</td><td>The anonymous ZeroGPU quota of the HairDeck Space</td><td>A Hugging Face token in a local <code>.env</code>; the script prints only "token yes/no".</td></tr>
+    <tr><td>Hair did not fit the new avatar</td><td>HairDeck places hair for its own avatar</td><td>Measured both skullcaps in Blender; one scale (1.0035) and a shift map the hair.</td></tr>
+    <tr><td>A dark card crossed her face</td><td>Two tendril cards of the updo</td><td>Removed those 2 cards.</td></tr>
+    <tr><td>Long locks stood out from her chest</td><td>The image gives HairDeck no depth</td><td>Measured her chest profile; points are pushed back to 1.2 cm in front of it.</td></tr>
+    <tr><td>Arms swung across her chest</td><td>The glTF import makes short arm bones (0.17 m for both), so IK aimed at the wrong point</td><td>Each arm bone's tail now points at the next joint.</td></tr>
+    <tr><td>Her arm swung out sideways</td><td>Blending the IK pose with the arms-down pose</td><td>IK stays on for the whole gesture, and the target moves instead.</td></tr>
+    <tr><td>The child reached across the woman</td><td>The silver lock hangs on her left, not her right</td><td>The child stands on her left and steps in from the side of the frame.</td></tr>
+    <tr><td>A pigtail stood straight out</td><td>Wind force too strong for the chain stiffness</td><td>Wind reduced from 0.22 to 0.015, in two steps.</td></tr>
+    <tr><td>The helper's hand showed at the frame edge</td><td>Its rest point was inside the frame</td><td>Moved the rest point out; rendered frames 0-345 again.</td></tr>
+    <tr><td>The end credit covered her head</td><td>The last shot puts her on the left</td><td>Moved the credit to the top right.</td></tr>
+  </table></div>
+
+  <h2>6. Cost and result</h2>
+  <p>The fal jobs cost <b>$0.71</b> by list price: 14 images at $0.0398 each and 1 music track at $0.15. No job was refused for billing. Claude Code checked the price before each new kind of job, as the brief asked.</p>
+  <p>The result is a 90-second film at 1920x1080 and 30 fps. Its known limits are listed in the <a href="https://github.com/az9713/hairdeck-metamorphosis-demo#known-limits">README</a>. The main ones: HairDeck made the last style as a loose lock, not a real braid, and the hands move near the hair without touching it. The interactive latent-morph player that the brief suggested as an option was not built.</p>
+  <p class="small">Backdrops, reference images, and music were generated with AI through fal. The code and the film were made with Claude Code.</p>
+</main>
+</body>
+</html>
